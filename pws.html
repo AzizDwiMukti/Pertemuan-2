@@ -140,4 +140,21 @@
         setInterval(updateWaktu, 1000);
         updateWaktu();
 
+        // 🌦️ Ambil data cuaca berdasarkan input kota
+        function ambilCuaca(lokasiManual) {
+            const lokasi = lokasiManual || document.getElementById("inputLokasi").value || "Yogyakarta";
+            const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${lokasi}&aqi=no`;
+
+            $.ajax({
+                url: url,
+                method: "GET",
+                success: function(data) {
+                    tampilkanData(data);
+                },
+                error: function() {
+                    alert("❌ Gagal mengambil data cuaca. Pastikan nama kota benar atau koneksi aktif.");
+                }
+            });
+        }
+
        
