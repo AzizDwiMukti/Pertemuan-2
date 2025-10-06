@@ -96,4 +96,37 @@
 </head>
 <body>
 
-    
+    <div class="container">
+        <h2>INFO CUACA</h2>
+        <div class="time" id="waktu">Memuat waktu...</div>
+
+        <label>Lokasi :</label>
+        <input type="text" id="inputLokasi" placeholder="Masukkan kota/kecamatan">
+        <button onclick="ambilCuaca()">GET</button>
+        <button onclick="getLokasiGPS()">📍 GPS</button>
+
+        <hr>
+
+        <div class="icon-cuaca">
+            <img id="icon" src="" alt="Ikon Cuaca">
+            <div class="condition-text" id="kondisi">-</div>
+        </div>
+
+        <div class="info daerah">
+            <p>Negara : <span id="negara">-</span></p>
+            <p>Provinsi : <span id="provinsi">-</span></p>
+            <p>Kecamatan : <span id="kecamatan">-</span></p>
+            <p>Suhu : <span id="suhu">-</span></p>
+            <p>Kelembaban : <span id="kelembaban">-</span></p>
+            <hr>
+            <p>Lokasi : <span id="lokasi">-</span></p>
+            <p>Latitude : <span id="latitude">-</span></p>
+            <p>Longitude : <span id="longitude">-</span></p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        const apiKey = "9df9e5e6e8ba4b38b8511854250610";
+
+       
