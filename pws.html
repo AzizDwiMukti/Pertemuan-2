@@ -129,4 +129,15 @@
     <script>
         const apiKey = "9df9e5e6e8ba4b38b8511854250610";
 
+         // ⏰ Menampilkan waktu sekarang
+        function updateWaktu() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const tanggal = now.toLocaleDateString('id-ID', options);
+            const waktu = now.toLocaleTimeString('id-ID');
+            document.getElementById("waktu").textContent = `${tanggal} | ${waktu}`;
+        }
+        setInterval(updateWaktu, 1000);
+        updateWaktu();
+
        
