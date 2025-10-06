@@ -157,4 +157,46 @@
             });
         }
 
+        // 📍 Ambil lokasi otomatis (GPS)
+        function getLokasiGPS() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (pos) => {
+                        const lat = pos.coords.latitude;
+                        const lon = pos.coords.longitude;
+                        const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${lat},${lon}&aqi=no`;
+                        $.get(url, function(data) {
+                            tampilkanData(data);
+                        });
+                    },
+                    () => {
+                        alert("❌ Tidak dapat mengakses lokasi. Pastikan izin GPS diaktifkan.");
+                    }
+                );
+            } else {
+                alert("Browser kamu tidak mendukung GPS.");
+            }
+        }
+
+        // 🧾 Fungsi untuk menampilkan semua data
+        function tampilkanData(data) {
+            $("#negara").text(data.location.country);
+            $("#provinsi").text(data.location.region || "-");
+            $("#kecamatan").text(data.location.name);
+            $("#suhu").text(data.current.temp_c + " °C");
+            $("#kelembaban").text(data.current.humidity + " %");
+            $("#latitude").text(data.location.lat);
+            $("#longitude").text(data.location.lon);
+            $("#lokasi").text(`${data.location.name}, ${data.location.region}`);
+            $("#icon").attr("src", "https:" + data.current.condition.icon);
+            $("#kondisi").text(data.current.condition.text);
+        }
+
+        // 🚀 Jalankan otomatis Yogyakarta saat pertama kali
+        ambilCuaca("Yogyakarta");
+    </script>
+
+</body>
+</html>
+
        
